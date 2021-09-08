@@ -1,3 +1,3 @@
 # graphtheory
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/graphtheory)
+[View on StackBlitz ⚡️](https://graphtheory.stackblitz.io)
