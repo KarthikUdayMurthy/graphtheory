@@ -1,0 +1,48 @@
+<div id="cyWrap">
+  <div id="btnsPanelWrap">
+    <button id="btnsPanelTrigger">Actions&nbsp;&#9660;<span id="selectedActionName"></span></button>
+    <button id="historyBtn">History</button>
+    <div id="btnsPanel"></div>
+  </div>
+  <div id="optionsWrap">
+    <label>Graph:&nbsp;
+      <select id="selGraph">
+        <option value="demo" selected>Demo</option>
+        <option value="airports">Airports</option>
+      </select>
+    </label>
+    <label>Speed:&nbsp;
+      <select id="selSpeed">
+        <option value=10>1/100 s</option>
+        <option value=100 selected>1/10 s</option>
+        <option value=333>1/3 s</option>
+        <option value=500>1/2 s</option>
+        <option value=1000>1 s</option>
+        <option value=2000>2 s</option>
+        <option value=5000>5 s</option>
+      </select>
+    </label>
+    <label>
+      <input type="checkbox" id="revertToOriginal" />&nbsp;Revert style
+    </label>
+    <label>
+      <input type="checkbox" id="autoPlay" checked />&nbsp;Auto Play
+    </label>
+  </div>
+  <div id="cy">
+    <p id="loading">No Graphs Yet!</p>
+  </div>
+</div>
+
+<div id="animControls">
+  <button id="playAnimBtn" style="display: none;">Play</button>
+  <button id="pauseAnimBtn" style="display: none;">Pause</button>
+  <button id="nextAnimBtn">Next</button>
+</div>
+
+<div id="historyWrap">
+  <span id="historyClose">&times;</span>
+  <div id="historyModal">
+    <div class="historyContent" id="noHistory">No history yet!</div>
+  </div>
+</div>
