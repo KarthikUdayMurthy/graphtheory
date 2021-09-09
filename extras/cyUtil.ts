@@ -141,7 +141,7 @@ export function clearAllStyles(cy, clearQueue: boolean = true) {
 
 export interface IlogicBtn {
   text: string;
-  onClick: (cy, e) => void;
+  onClick: (cy, e) => any;
   classNames?: string;
 }
 

@@ -20,6 +20,7 @@ export function loadGraph() {
   allBtns.push(logicBtns.getBfsrBtn(graph, afterAnimCallback));
   allBtns.push(logicBtns.getBfsPathBtn(graph, afterAnimCallback));
   allBtns.push(logicBtns.getSCCBtn(graph, afterAnimCallback, cy));
+  allBtns.push(logicBtns.getMinEdgeToReachAllBtn(graph, afterAnimCallback, cy));
   addLogicButtons(cy, allBtns);
   return cy;
 }

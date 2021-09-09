@@ -12,7 +12,7 @@ import { addHistoryContent, IHistoryContent } from '../../index';
 let moduleGraph: Graph;
 let moduleCy;
 
-const stackCallback = (
+export const stackCallback = (
   vertex: Vertex,
   stackIndex: number
 ): IAnimIdWithCallback['callback'] => {
@@ -28,7 +28,9 @@ const stackCallback = (
   };
 };
 
-const stackPopCallback = (vertex: Vertex): IAnimIdWithCallback['callback'] => {
+export const stackPopCallback = (
+  vertex: Vertex
+): IAnimIdWithCallback['callback'] => {
   return ele => {
     ele.removeClass('stack');
     ele.data({ value: vertex.value.split('-')[0] });
@@ -63,6 +65,7 @@ export const getSCCBtn = (
         afterAnimCallback(cy);
       });
       addHistory('Find SCCs', sccAlgo);
+      return sccAlgo;
     }
   };
   return sccBtn;
