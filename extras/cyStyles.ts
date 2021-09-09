@@ -61,7 +61,10 @@ export const inActiveEdgeStyle = {
   'curve-style': 'bezier',
   'line-style': 'solid',
   'source-endpoint': 'outside-to-node-or-label',
-  'target-endpoint': 'outside-to-node-or-label'
+  'target-endpoint': 'outside-to-node-or-label',
+  'transition-property': 'line-color ' + arrowPosition + 'arrow-color',
+  'transition-duration': '0.3s',
+  'transition-timing-function': 'ease-in-out-cubic'
 };
 
 export const activeEdgeStyle = {
@@ -120,6 +123,13 @@ export const getBaseStyleSheetJSON = isDirected => {
       selector: '.highlight2Gradient',
       style: {
         ...highlight2Gradient
+      }
+    },
+    {
+      selector: '.edgeHighlight1',
+      style: {
+        'line-color': '#fb8c00',
+        [arrowPosition + 'arrow-color']: '#fb8c00'
       }
     },
     {

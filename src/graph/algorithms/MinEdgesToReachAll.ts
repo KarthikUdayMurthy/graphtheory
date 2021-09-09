@@ -1,6 +1,6 @@
 import { Graph, Vertex, Edge } from '../index';
 import { SCCAlgorithm } from './SCCAlgorithm';
-import { IAnimSequenceId, IAnimIdWithCallback } from '../../../extras/cyUtil';
+import { IAnimIdWithCallback } from '../../../extras/cyUtil';
 
 export class MinEdgesToReachAll extends SCCAlgorithm {
   public newEdges: Edge[] = [];
@@ -15,7 +15,7 @@ export class MinEdgesToReachAll extends SCCAlgorithm {
     this.currentGraph = graph;
   }
 
-  addEdgesToReachAll(startingVertex: Vertex, SCCs: Array<Array<Vertex>> = []) {
+  getEdgesToReachAll(startingVertex: Vertex, SCCs: Array<Array<Vertex>> = []) {
     if (SCCs.length === 0) {
       super.findSCCs();
       SCCs = super.SCCs;
@@ -28,6 +28,7 @@ export class MinEdgesToReachAll extends SCCAlgorithm {
         } else {
           hasZeroIncomingEdges = scc[0].incomingEdges.length === 0;
         }
+        this.loopCounter += 1;
       } else {
         const thisSccIds = scc.map(({ id }) => id);
         if (thisSccIds.indexOf(startingVertex.id) >= 0) {
@@ -35,6 +36,7 @@ export class MinEdgesToReachAll extends SCCAlgorithm {
         } else {
           hasZeroIncomingEdges =
             scc.filter(({ incomingEdges }) => {
+              this.loopCounter += 1;
               // return true if atleast one incoming edge coming from outside this scc
               return (
                 incomingEdges.filter(
@@ -46,9 +48,13 @@ export class MinEdgesToReachAll extends SCCAlgorithm {
         }
       }
       if (hasZeroIncomingEdges) {
-        this.newEdges.push(
-          new Edge(this.currentGraph.nextId(), startingVertex, scc[0])
+        const newEdge = new Edge(
+          this.currentGraph.nextId(),
+          startingVertex,
+          scc[0]
         );
+        this.currentGraph.addEdge(newEdge);
+        this.newEdges.push(newEdge);
       }
     });
   }

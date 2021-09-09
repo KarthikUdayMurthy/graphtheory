@@ -1,5 +1,5 @@
 import cytoscape from './cytoscape.min';
-import { Graph } from '../src/graph';
+import { Graph, Edge } from '../src/graph';
 import { getBaseStyleSheetJSON, arrowPosition } from './cyStyles';
 
 export * from './cyAnim';
@@ -201,6 +201,24 @@ export function reverseAllEdges(cy, copyOldStyles: boolean = false) {
       });
     }
   });
+}
+
+export function addEdge(cy, edge: Edge) {
+  const {
+    id,
+    source: { id: source },
+    target: { id: target },
+    weight
+  } = edge;
+  const newEdge = cy.add({
+    data: {
+      id,
+      source,
+      target,
+      weight
+    }
+  });
+  return newEdge;
 }
 
 export { getBaseStyleSheetJSON };

@@ -134,10 +134,12 @@ export function animSequence(
     animControlsDiv.style.display = 'none';
     animRecursive();
   } else {
-    animControlsDiv.style.display = 'flex';
-    playAnimBtn.style.display = 'inline';
-    nextAnimBtn.style.display = 'inline';
-    nextAnimBtn.disabled = false;
+    setTimeout(() => {
+      animControlsDiv.style.display = 'flex';
+      playAnimBtn.style.display = 'inline';
+      nextAnimBtn.style.display = 'inline';
+      nextAnimBtn.disabled = false;
+    }, 1);
   }
 }
 

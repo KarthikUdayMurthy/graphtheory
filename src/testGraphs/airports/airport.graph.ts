@@ -46,18 +46,20 @@ const routes = [
   // ['LGA', 'EWR']
 ];
 
-const graph = new Graph(true);
+export const getOriginalGraph = (): Graph => {
+  const graph = new Graph(true);
 
-airports.forEach(airport => graph.addVertex(new Vertex(airport, airport)));
+  airports.forEach(airport => graph.addVertex(new Vertex(airport, airport)));
 
-routes.forEach(route =>
-  graph.addEdge(
-    new Edge(
-      graph.nextId(),
-      new Vertex(route[0], route[0]),
-      new Vertex(route[1], route[1])
+  routes.forEach(route =>
+    graph.addEdge(
+      new Edge(
+        graph.nextId(),
+        new Vertex(route[0], route[0]),
+        new Vertex(route[1], route[1])
+      )
     )
-  )
-);
+  );
 
-export { graph };
+  return graph;
+};
